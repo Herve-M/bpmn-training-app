@@ -15,6 +15,16 @@
     <bpmn2:userTask id="task-select-pizza" name="Select Pizza">
       <bpmn2:extensionElements>
         <camunda:formData>
+          <camunda:formField id="customerName" label="Name" type="string">
+            <camunda:validation>
+              <camunda:constraint name="required"/>
+            </camunda:validation>
+          </camunda:formField>
+          <camunda:formField id="customerAddress" label="Address" type="string">
+            <camunda:validation>
+              <camunda:constraint name="required"/>
+            </camunda:validation>
+          </camunda:formField>
           <camunda:formField id="pizzatype" label="Pizza Type" type="enum">
             <camunda:validation>
               <camunda:constraint name="required"/>
@@ -22,16 +32,6 @@
             <camunda:value id="bpm" name="BPM Pizza"/>
             <camunda:value id="texmex" name="TexMex Pizza"/>
             <camunda:value id="kill" name="Killing Pizza"/>
-          </camunda:formField>
-          <camunda:formField id="customer-name" label="Name" type="string">
-            <camunda:validation>
-              <camunda:constraint name="required"/>
-            </camunda:validation>
-          </camunda:formField>
-          <camunda:formField id="customer-address" label="Address" type="string">
-            <camunda:validation>
-              <camunda:constraint name="required"/>
-            </camunda:validation>
           </camunda:formField>
         </camunda:formData>
         <camunda:executionListener class="pizzaapp.log.ExecutionListenerLogger" event="start"/>
@@ -58,7 +58,7 @@
       <bpmn2:messageEventDefinition id="MessageEventDefinition_1" messageRef="Message_3"/>
     </bpmn2:intermediateCatchEvent>
     <bpmn2:sequenceFlow id="SequenceFlow_4" name="" sourceRef="eventbasedgateway-customer-1" targetRef="intermediatecatchevent-EoM-pizzaReceived"/>
-    <bpmn2:serviceTask id="task-pay-pizza" name="Pay the Pizza&#xA;">
+    <bpmn2:serviceTask id="task-pay-pizza" camunda:class="pizzaapp.msg.SendMSGAskPizza" name="Pay the Pizza&#xA;">
       <bpmn2:extensionElements>
         <camunda:executionListener class="pizzaapp.log.ExecutionListenerLogger" event="start"/>
         <camunda:executionListener class="pizzaapp.log.ExecutionListenerLogger" event="end"/>
@@ -87,7 +87,7 @@
       <bpmn2:incoming>SequenceFlow_10</bpmn2:incoming>
       <bpmn2:outgoing>SequenceFlow_11</bpmn2:outgoing>
       <bpmn2:timerEventDefinition id="TimerEventDefinition_1">
-        <bpmn2:timeCycle xsi:type="bpmn2:tFormalExpression"><![CDATA["R/PT01:00"]]></bpmn2:timeCycle>
+        <bpmn2:timeCycle xsi:type="bpmn2:tFormalExpression"><![CDATA["R/PT01"]]></bpmn2:timeCycle>
       </bpmn2:timerEventDefinition>
     </bpmn2:intermediateCatchEvent>
     <bpmn2:sequenceFlow id="SequenceFlow_10" name="" sourceRef="eventbasedgateway-customer-1" targetRef="intermediatecatchevent-EoT-customer-pizzaAsk"/>
@@ -115,7 +115,7 @@
       <bpmn2:userTask id="task-order-pizza" camunda:candidateGroups="customer" name="Order Pizza">
         <bpmn2:extensionElements>
           <camunda:formData>
-            <camunda:formField id="customer-validation" label="Ordering " type="boolean" defaultValue="false">
+            <camunda:formField id="customerValidation" label="Ordering " type="boolean" defaultValue="false">
               <camunda:validation>
                 <camunda:constraint name="required"/>
               </camunda:validation>
