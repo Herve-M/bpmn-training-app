@@ -1,0 +1,25 @@
+UserTask
+Une tâche "Utilisateur" permet de modéliser un travail qui doit être réalisé par un être humain.
+Lorsque l'execution du processus atteint une tâche de ce genre, celle-ci apparait s'affiche dans la liste des tâches de la personne à qui elle est assignée ou appartenant aux groupes désignés comme candidats à la résolution de la tâche).
+L'execution du processus est stoppé jusqu'à la validation par une personne (assignée ou candidate par un groupe).
+
+ManualTask
+Une tâche "Manuel" se définit par un élément externe au moteur BPM. Cette tâche est modélisé par un travail réalisé par une personne ou un autre élément, noté comme inconnu, par défaut ou par nécessité, par le moteur.
+Lors de l'execution du processus, le passage par une telle tâche ne stoppe pas son execution et continue simplement le fils d'execution jusqu'à la tâche suivante.
+
+ServiceTask
+La tâche "Service" est utilisé pour appelé des classes/méthodes de type <<service>>. Ceci permet d'executer du code Java à partir du moteur BPM pour effectuer certaines actions spécifiques.
+Il est possible de définir des classes déléguées héritant de la classe Java "JavaDelegate" ou d'executer simplement une methode définie.
+Les tâches "Service" permettent d'effectuer toute action réalisable avec le langage Java et permet, lors d'une délégation, de récupérer une varible représentant l'execution du processus, comprenant les variables treansmises d'un processus à un autres.
+
+ScriptTask
+La tâche "Script" permet comme son nom l'indique, d'executer un script, permettant d'automatiser le traitement de calculs ou la prise de décisions.
+Il est possible d'écrire un script avec plusieurs langages compatible avec JSR-223 comme Groovy, Jython, JRuby, JavaScript.
+
+SendTask
+Cette tâche permet simplement lors de son execution d'envoyer un message vers une autre tâche dans le modèle BPMN. Il y a très peu de documentation sur cette tâche, rendant son utilisation  relativement flou et difficile. Selon la documentattion de camunda, il est possible de faire "corréler" des messages à partir du context d'execution du processus.
+La tâche "d'envoi" se comporte de la même manière que la tâche "service". Affiliée à une classe déléguée, il est possible de définir les actions à effectuer par le langage Java, ainsi que la définition et l'envoi du message.
+
+ReceiveTask
+Basé sur le principe inverse à la tâche "d'envoi", la "réception" permet de stopper l'execution d'un processus jusqu'à la réception d'un message précis. La progression du processus se poursuie lors de la reception de ce message défini ou par la validation forcée et explicite de cette tâche.
+La documentation sur cette tâche est relativement sommaire, ne permettant pas d'avoir une vision complète des possibilités de l'utilisation de cette tâche.
