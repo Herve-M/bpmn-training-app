@@ -1,0 +1,62 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<bpmn2:definitions xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:bpmn2="http://www.omg.org/spec/BPMN/20100524/MODEL" xmlns:bpmndi="http://www.omg.org/spec/BPMN/20100524/DI" xmlns:camunda="http://activiti.org/bpmn" xmlns:dc="http://www.omg.org/spec/DD/20100524/DC" xmlns:di="http://www.omg.org/spec/DD/20100524/DI" xsi:schemaLocation="http://www.omg.org/spec/BPMN/20100524/MODEL BPMN20.xsd" id="_DlINkInmEeWa8IdTJZBu_Q" exporter="camunda modeler" exporterVersion="2.7.0" targetNamespace="http://activiti.org/bpmn">
+  <bpmn2:process id="ScriptTask_Wiki_Process" name="ScriptTask Wiki Process" isExecutable="true">
+    <bpmn2:scriptTask id="simple-scripttask" camunda:resource="classpath://task-app/src/main/java/scripts/SimpleDelegate.java/simpleScript.groovy" name="Simple Script Task" scriptFormat="groovy">
+      <bpmn2:extensionElements>
+        <camunda:inputOutput>
+          <camunda:inputParameter name="inputArray">
+            <camunda:list>
+              <camunda:value>1</camunda:value>
+              <camunda:value>2</camunda:value>
+              <camunda:value>3</camunda:value>
+              <camunda:value>4</camunda:value>
+              <camunda:value>5</camunda:value>
+              <camunda:value>6</camunda:value>
+              <camunda:value>7</camunda:value>
+              <camunda:value>8</camunda:value>
+              <camunda:value>9</camunda:value>
+              <camunda:value>10</camunda:value>
+            </camunda:list>
+          </camunda:inputParameter>
+        </camunda:inputOutput>
+      </bpmn2:extensionElements>
+      <bpmn2:incoming>SequenceFlow_1</bpmn2:incoming>
+      <bpmn2:outgoing>SequenceFlow_2</bpmn2:outgoing>
+    </bpmn2:scriptTask>
+    <bpmn2:endEvent id="EndEvent_1" name="Simple End&#xD;&#xA;Point">
+      <bpmn2:incoming>SequenceFlow_2</bpmn2:incoming>
+    </bpmn2:endEvent>
+    <bpmn2:startEvent id="simple-startevent" name="Simple Start&#xD;&#xA;Point">
+      <bpmn2:outgoing>SequenceFlow_1</bpmn2:outgoing>
+    </bpmn2:startEvent>
+    <bpmn2:sequenceFlow id="SequenceFlow_1" name="" sourceRef="simple-startevent" targetRef="simple-scripttask"/>
+    <bpmn2:sequenceFlow id="SequenceFlow_2" name="" sourceRef="simple-scripttask" targetRef="EndEvent_1"/>
+  </bpmn2:process>
+  <bpmndi:BPMNDiagram id="BPMNDiagram_1">
+    <bpmndi:BPMNPlane id="BPMNPlane_1" bpmnElement="ScriptTask_Wiki_Process">
+      <bpmndi:BPMNShape id="_BPMNShape_StartEvent_5" bpmnElement="simple-startevent">
+        <dc:Bounds height="36.0" width="36.0" x="307.0" y="272.0"/>
+        <bpmndi:BPMNLabel>
+          <dc:Bounds height="0.0" width="0.0" x="325.0" y="313.0"/>
+        </bpmndi:BPMNLabel>
+      </bpmndi:BPMNShape>
+      <bpmndi:BPMNShape id="_BPMNShape_EndEvent_5" bpmnElement="EndEvent_1">
+        <dc:Bounds height="36.0" width="36.0" x="779.0" y="272.0"/>
+        <bpmndi:BPMNLabel>
+          <dc:Bounds height="0.0" width="0.0" x="797.0" y="313.0"/>
+        </bpmndi:BPMNLabel>
+      </bpmndi:BPMNShape>
+      <bpmndi:BPMNShape id="_BPMNShape_ScriptTask_2" bpmnElement="simple-scripttask">
+        <dc:Bounds height="80.0" width="100.0" x="528.0" y="250.0"/>
+      </bpmndi:BPMNShape>
+      <bpmndi:BPMNEdge id="BPMNEdge_SequenceFlow_1" bpmnElement="SequenceFlow_1" sourceElement="_BPMNShape_StartEvent_5" targetElement="_BPMNShape_ScriptTask_2">
+        <di:waypoint xsi:type="dc:Point" x="343.0" y="290.0"/>
+        <di:waypoint xsi:type="dc:Point" x="528.0" y="290.0"/>
+      </bpmndi:BPMNEdge>
+      <bpmndi:BPMNEdge id="BPMNEdge_SequenceFlow_2" bpmnElement="SequenceFlow_2" sourceElement="_BPMNShape_ScriptTask_2" targetElement="_BPMNShape_EndEvent_5">
+        <di:waypoint xsi:type="dc:Point" x="628.0" y="290.0"/>
+        <di:waypoint xsi:type="dc:Point" x="779.0" y="290.0"/>
+      </bpmndi:BPMNEdge>
+    </bpmndi:BPMNPlane>
+  </bpmndi:BPMNDiagram>
+</bpmn2:definitions>

@@ -1,0 +1,45 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<bpmn2:definitions xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:bpmn2="http://www.omg.org/spec/BPMN/20100524/MODEL" xmlns:bpmndi="http://www.omg.org/spec/BPMN/20100524/DI" xmlns:dc="http://www.omg.org/spec/DD/20100524/DC" xmlns:di="http://www.omg.org/spec/DD/20100524/DI" xsi:schemaLocation="http://www.omg.org/spec/BPMN/20100524/MODEL BPMN20.xsd" id="_ck2kEInyEeWa8IdTJZBu_Q" exporter="camunda modeler" exporterVersion="2.7.0" targetNamespace="http://activiti.org/bpmn">
+  <bpmn2:process id="ReceiveTask_Wiki_Process" name="ReceiveTask Wiki Process" isExecutable="true">
+    <bpmn2:startEvent id="simple-startevent" name="Simple Start&#xD;&#xA;Point">
+      <bpmn2:outgoing>SequenceFlow_1</bpmn2:outgoing>
+    </bpmn2:startEvent>
+    <bpmn2:receiveTask id="simple-receivetask" name="Simple Receive Task" messageRef="Message_1">
+      <bpmn2:incoming>SequenceFlow_1</bpmn2:incoming>
+      <bpmn2:outgoing>SequenceFlow_2</bpmn2:outgoing>
+    </bpmn2:receiveTask>
+    <bpmn2:endEvent id="simple-endevent" name="Simple End&#xD;&#xA;Point">
+      <bpmn2:incoming>SequenceFlow_2</bpmn2:incoming>
+    </bpmn2:endEvent>
+    <bpmn2:sequenceFlow id="SequenceFlow_1" name="" sourceRef="simple-startevent" targetRef="simple-receivetask"/>
+    <bpmn2:sequenceFlow id="SequenceFlow_2" name="" sourceRef="simple-receivetask" targetRef="simple-endevent"/>
+  </bpmn2:process>
+  <bpmn2:message id="Message_1" name="newMessage"/>
+  <bpmndi:BPMNDiagram id="BPMNDiagram_1">
+    <bpmndi:BPMNPlane id="BPMNPlane_1" bpmnElement="ReceiveTask_Wiki_Process">
+      <bpmndi:BPMNShape id="_BPMNShape_StartEvent_7" bpmnElement="simple-startevent">
+        <dc:Bounds height="36.0" width="36.0" x="349.0" y="301.0"/>
+        <bpmndi:BPMNLabel>
+          <dc:Bounds height="0.0" width="0.0" x="367.0" y="342.0"/>
+        </bpmndi:BPMNLabel>
+      </bpmndi:BPMNShape>
+      <bpmndi:BPMNShape id="_BPMNShape_EndEvent_7" bpmnElement="simple-endevent">
+        <dc:Bounds height="36.0" width="36.0" x="823.0" y="301.0"/>
+        <bpmndi:BPMNLabel>
+          <dc:Bounds height="0.0" width="0.0" x="841.0" y="342.0"/>
+        </bpmndi:BPMNLabel>
+      </bpmndi:BPMNShape>
+      <bpmndi:BPMNShape id="_BPMNShape_ReceiveTask_2" bpmnElement="simple-receivetask">
+        <dc:Bounds height="80.0" width="100.0" x="532.0" y="279.0"/>
+      </bpmndi:BPMNShape>
+      <bpmndi:BPMNEdge id="BPMNEdge_SequenceFlow_1" bpmnElement="SequenceFlow_1" sourceElement="_BPMNShape_StartEvent_7" targetElement="_BPMNShape_ReceiveTask_2">
+        <di:waypoint xsi:type="dc:Point" x="385.0" y="319.0"/>
+        <di:waypoint xsi:type="dc:Point" x="532.0" y="319.0"/>
+      </bpmndi:BPMNEdge>
+      <bpmndi:BPMNEdge id="BPMNEdge_SequenceFlow_2" bpmnElement="SequenceFlow_2" sourceElement="_BPMNShape_ReceiveTask_2" targetElement="_BPMNShape_EndEvent_7">
+        <di:waypoint xsi:type="dc:Point" x="632.0" y="319.0"/>
+        <di:waypoint xsi:type="dc:Point" x="823.0" y="319.0"/>
+      </bpmndi:BPMNEdge>
+    </bpmndi:BPMNPlane>
+  </bpmndi:BPMNDiagram>
+</bpmn2:definitions>
